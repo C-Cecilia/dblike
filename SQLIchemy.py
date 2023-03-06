@@ -11,7 +11,7 @@ from IPython.display import display
 
 URL= "dbbike.c2pot9zcoud2.eu-west-1.rds.amazonaws.com"
 PORT="3306"
-DB="dbike"
+DB="dbbike"
 USER="admin"
 PASSWORD="DBbike30830" 
 
