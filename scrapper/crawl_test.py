@@ -94,10 +94,13 @@ def write_weather_to_db(weather_json):
 
 
 def write_weather_to_file(text, now):
-    with open("static/weatherData/weather_{}".format(now).replace(" ", "_"), 'w')as f:
+    directory = "static/weatherData"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    with open("static/weatherData/weather_{}".format(now).replace(" ", "_"), 'w') as f:
         f.write(text)
-
-
+    
 def availability():
     
     # while True:
