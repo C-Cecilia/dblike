@@ -18,7 +18,7 @@ import os
 
 def write_availability_to_db(respond_json):
 
-    mysql_statement = text("INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES"
+    mysql_statement = text("INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES")
     for availability_info in respond_json:
         number = str(availability_info['number'])
         last_update = str(availability_info['last_update']/1000)
