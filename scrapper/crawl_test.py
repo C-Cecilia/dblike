@@ -60,9 +60,9 @@ def write_station_to_db(respond_json):
         name = "\'"+station_info['name'].replace("'", "\\'")+"\'"
         position_lat = str(station_info['position']['lat'])
         position_lng = str(station_info['position']['lng'])
-        mysql_statement += "("+number+", "+address+", "+banking+", " + \
-            bike_stands+", "+name+", "+position_lat+", "+position_lng+")"
-        mysql_statement += ", "
+        mysql_statement += text("("+number+", "+address+", "+banking+", " + \
+            bike_stands+", "+name+", "+position_lat+", "+position_lng+")")
+        mysql_statement +=text( ", ")
 
     mysql_statement = mysql_statement[:-2] + ";"
 
