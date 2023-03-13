@@ -86,11 +86,9 @@ def write_weather_to_db(weather_json):
     engine = create_engine(
         ("mysql+mysqldb://{}:{}@{}:{}/{}").format(config.USER, config.PASSWORD, config.URL, config.PORT, config.DB), echo=True)
     
-   
     with engine.connect() as connection:
-         # connection.execute("TRUNCATE TABLE dbike.weather;")
-       query = "INSERT INTO weather (time, main_weather, visibility, wind_speed, temp, humidity) VALUES ("+time+", "+main_weather+", "+visibility+", "+wind_speed+", "+temp+", "+humidity+");"
-       connection.execute(text(query))
+        query = text("INSERT INTO weather (time, main_weather, visibility, wind_speed, temp, humidity) VALUES (:time, :main_weather, :visibility, :wind_speed, :temp, :humidity)")
+        connection.execute(query, time=time, main_weather=main_weather, visibility=visibility, wind_speed=wind_speed, temp=temp, humidity=humidity)
 
 
 
