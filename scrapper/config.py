@@ -4,6 +4,6 @@ STATIONS_URI = "https://api.jcdecaux.com/vls/v1/stations"
 
 URL = "dbbike.c2pot9zcoud2.eu-west-1.rds.amazonaws.com"
 PORT = "3306"
-DB = "dbbike"
+DB = "dbike"
 USER = "admin"
 PASSWORD = "DBbike30830"
