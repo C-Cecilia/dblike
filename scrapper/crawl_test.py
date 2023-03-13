@@ -6,6 +6,7 @@ import time
 import traceback
 from sqlalchemy import create_engine
 from sqlalchemy import text
+from sqlalchemy import insert
 import traceback
 import glob
 import os
