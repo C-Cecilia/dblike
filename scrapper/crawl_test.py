@@ -18,16 +18,16 @@ import os
 
 def write_availability_to_db(respond_json):
 
-    mysql_statement = text("INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES")
+    mysql_statement = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES"
     for availability_info in respond_json:
         number = str(availability_info['number'])
         last_update = str(availability_info['last_update']/1000)
         available_bikes = str(availability_info['available_bikes'])
         available_bike_stands = str(availability_info['available_bike_stands'])
         status = "\'"+availability_info['status']+"\'"
-        mysql_statement += text("("+number+", "+last_update+", " + \
-            available_bikes+", "+available_bike_stands+", "+status+")")
-        mysql_statement += text(", ")
+        mysql_statement += "("+number+", "+last_update+", " + \
+            available_bikes+", "+available_bike_stands+", "+status+")"
+        mysql_statement += ", "
 
     mysql_statement = tetx(mysql_statement[:-2] + ";")
 
@@ -62,7 +62,7 @@ def write_station_to_db(respond_json):
         position_lng = str(station_info['position']['lng'])
         mysql_statement += text("("+number+", "+address+", "+banking+", " + \
             bike_stands+", "+name+", "+position_lat+", "+position_lng+")")
-        mysql_statement +=text( ", ")
+        mysql_statement += ", "
 
     mysql_statement = mysql_statement[:-2] + ";"
 
@@ -72,7 +72,7 @@ def write_station_to_db(respond_json):
     with engine.connect() as connection:
 
         # connection.execute("TRUNCATE TABLE dbike.station;")
-        connection.execute(text(mysql_statement))
+        connection.execute(mysql_statement)
 
 
 def write_weather_to_db(weather_json):
