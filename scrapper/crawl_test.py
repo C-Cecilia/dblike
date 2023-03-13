@@ -83,7 +83,8 @@ def write_weather_to_db(weather_json):
    
     with engine.connect() as connection:
          # connection.execute("TRUNCATE TABLE dbike.weather;")
-       connection.execute("INSERT INTO weather (time, main_weather, visibility, wind_speed, temp, humidity) VALUES ("+time+", "+main_weather+", "+visibility+", "+wind_speed+", "+temp+", "+humidity+");")
+       query = "INSERT INTO weather (time, main_weather, visibility, wind_speed, temp, humidity) VALUES ("+time+", "+main_weather+", "+visibility+", "+wind_speed+", "+temp+", "+humidity+");"
+       connection.execute(text(query))
 
 
 
