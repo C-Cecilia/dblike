@@ -5,6 +5,7 @@ import datetime
 import time
 import traceback
 from sqlalchemy import create_engine
+from sqlalchemy import text
 import traceback
 import glob
 import os
@@ -65,7 +66,7 @@ def write_station_to_db(respond_json):
     with engine.connect() as connection:
 
         # connection.execute("TRUNCATE TABLE dbike.station;")
-        connection.execute(mysql_statement)
+        connection.execute(text(mysql_statement))
 
 
 def write_weather_to_db(weather_json):
