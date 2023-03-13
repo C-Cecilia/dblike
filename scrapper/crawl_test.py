@@ -29,7 +29,7 @@ def write_availability_to_db(respond_json):
             available_bikes+", "+available_bike_stands+", "+status+")"
         mysql_statement += ", "
 
-    mysql_statement = tetx(mysql_statement[:-2] + ";")
+    mysql_statement = mysql_statement[:-2] + ";"
 
     engine = create_engine(
         ("mysql+mysqldb://{}:{}@{}:{}/{}").format(config.USER, config.PASSWORD, config.URL, config.PORT, config.DB), echo=True)
