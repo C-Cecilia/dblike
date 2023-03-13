@@ -18,7 +18,7 @@ import os
 
 def write_availability_to_db(respond_json):
 
-    mysql_statement = "INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES"
+    mysql_statement = text("INSERT INTO availability (number, last_update, available_bikes, available_bike_stands, status) VALUES"
     for availability_info in respond_json:
         number = str(availability_info['number'])
         last_update = str(availability_info['last_update']/1000)
@@ -26,10 +26,10 @@ def write_availability_to_db(respond_json):
         available_bike_stands = str(availability_info['available_bike_stands'])
         status = "\'"+availability_info['status']+"\'"
         mysql_statement += "("+number+", "+last_update+", " + \
-            available_bikes+", "+available_bike_stands+", "+status+")"
-        mysql_statement += ", "
+            available_bikes+", "+available_bike_stands+", "+status+")")
+        mysql_statement += text(", ")
 
-    mysql_statement = mysql_statement[:-2] + ";"
+    mysql_statement = tetx(mysql_statement[:-2] + ";")
 
     engine = create_engine(
         ("mysql+mysqldb://{}:{}@{}:{}/{}").format(config.USER, config.PASSWORD, config.URL, config.PORT, config.DB), echo=True)
