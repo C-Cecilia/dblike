@@ -12,6 +12,7 @@ import os
 from pprint import pprint
 import simplejson
 from IPython.display import display
+import os
 
 
 def write_availability_to_db(respond_json):
@@ -39,8 +40,12 @@ def write_availability_to_db(respond_json):
 
 
 def write_availability_to_file(text, now):
-    with open("static/bikeData/bike_{}".format(now).replace(" ", "_"), 'w')as f:
+    directory = "static/bikeData"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with open("static/bikeData/bike_{}".format(now).replace(" ", "_"), 'w') as f:
         f.write(text)
+    
 
 
 def write_station_to_db(respond_json):
