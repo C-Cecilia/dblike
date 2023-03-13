@@ -88,9 +88,9 @@ def write_weather_to_db(weather_json):
     
     with engine.connect() as connection:
         query = text("INSERT INTO weather (time, main_weather, visibility, wind_speed, temp, humidity) VALUES (:time, :main_weather, :visibility, :wind_speed, :temp, :humidity)")
-        connection.execute(query, time=time, main_weather=main_weather, visibility=visibility, wind_speed=wind_speed, temp=temp, humidity=humidity)
-
-
+        params = {'time': time, 'main_weather': main_weather, 'visibility': visibility, 'wind_speed': wind_speed, 'temp': temp, 'humidity': humidity}
+        connection.execute(query, **params)
+        
 
 def write_weather_to_file(text, now):
     directory = "static/weatherData"
