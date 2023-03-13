@@ -25,7 +25,7 @@ def write_availability_to_db(respond_json):
         available_bikes = str(availability_info['available_bikes'])
         available_bike_stands = str(availability_info['available_bike_stands'])
         status = "\'"+availability_info['status']+"\'"
-        mysql_statement += "("+number+", "+last_update+", " + \
+        mysql_statement += text("("+number+", "+last_update+", " + \
             available_bikes+", "+available_bike_stands+", "+status+")")
         mysql_statement += text(", ")
 
